@@ -27,9 +27,11 @@ fake unfollow, so you can click around safely before using the real thing.
    - **Chrome / Edge / Brave:** `⌘⌥J` (Mac) or `Ctrl+Shift+J` (Windows)
    - **Firefox:** `⌘⌥K` / `Ctrl+Shift+K`
    - **Safari:** enable the Develop menu first (Settings → Advanced → *Show features for web developers*), then `⌘⌥C`
-   - The first time, Chrome may make you type **`allow pasting`** and hit enter before it lets you paste.
-3. Open [`ig-unfollows.js`](ig-unfollows.js), copy the **whole file**, paste it into the console, and press enter.
-4. It counts your followers/following, then the panel pops up. Filter, tick who you want gone, and hit **unfollow selected**.
+3. Grab the whole script and copy it:
+   - On GitHub: open [`ig-unfollows.js`](ig-unfollows.js), click the **Raw** button, then select all (`⌘A` / `Ctrl+A`) and copy (`⌘C` / `Ctrl+C`).
+   - Or open your local copy of `ig-unfollows.js` and copy everything.
+4. Paste it into the console and press enter. (First time in Chrome, if it blocks the paste, type **`allow pasting`** + enter, then paste again.)
+5. It counts your followers/following (you'll see a "counting…" card, plus some red console warnings — that's normal), then the panel pops up in the top-right. Filter, tick who you want gone, and hit **unfollow selected**.
 
 ## Staying un-blocked 🌸
 
