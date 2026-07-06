@@ -22,6 +22,8 @@ fake unfollow, so you can click around safely before using the real thing.
 
 ## Use it for real
 
+> Use a **desktop browser** (Chrome, Firefox, Safari, Edge) — this won't work in the Instagram phone app, since it needs a developer console.
+
 1. Open **[instagram.com](https://www.instagram.com)** in your browser and make sure you're logged in.
 2. Open your browser's developer console:
    - **Chrome / Edge / Brave:** `⌘⌥J` (Mac) or `Ctrl+Shift+J` (Windows)
