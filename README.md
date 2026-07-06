@@ -8,12 +8,12 @@ by **coco hernandez** (itself inspired by [@abir-taheer's gist](https://gist.git
 The original printed the non-mutuals to the console. This version keeps that spirit — no apps,
 no logins, no shady "unfollower tracker" services — and adds a friendly UI on top:
 
-- 🔎 **Auto-detects your account** from your login cookie — no typing your username
-- 🧾 **A floating panel** listing everyone who doesn't follow you back, with avatars, verified badges, and links to each profile
-- ✅ **Search + select** individual accounts, or **select all**
-- 🧹 **Unfollow in place**, one at a time, with human-like pacing so Instagram doesn't action-block you
-- ⏱️ **Adjustable delay**, a **live progress bar**, and a **stop** button you can hit any time
-- 🌸 Built as a single self-contained script — nothing loads from the network
+- **Auto-detects your account** from your login cookie — no typing your username
+- **A floating panel** listing everyone who doesn't follow you back, with avatars, verified badges, and links to each profile
+- **Search + select** individual accounts, or **select all**
+- **Unfollow in place**, one at a time, with human-like pacing to reduce the chance of an action block
+- **Adjustable delay**, a **live progress bar**, and a **stop** button you can hit any time
+- Built as a single self-contained script — nothing loads from the network
 
 ## Try the UI first (no Instagram needed)
 
@@ -35,14 +35,21 @@ fake unfollow, so you can click around safely before using the real thing.
 4. Paste it into the console and press enter. (First time in Chrome, if it blocks the paste, type **`allow pasting`** + enter, then paste again.)
 5. It counts your followers/following (you'll see a "counting…" card, plus some red console warnings — that's normal), then the panel pops up in the top-right. Filter, tick who you want gone, and hit **unfollow selected**.
 
-## Staying un-blocked 🌸
+## Warning: action blocks
 
-Instagram limits how fast you can unfollow. If you go too quickly it temporarily blocks the
-action (and the panel will stop early and tell you). To stay safe:
+**Instagram limits how fast you can unfollow, and unfollowing a lot in a short time can get
+your account temporarily action-blocked.** An action block means Instagram stops you from
+following or unfollowing anyone — sometimes for a few hours, sometimes for a day or more —
+and there's no way to lift it early; you just have to wait it out. Using this script does not
+make you immune to that. Use it at your own risk.
 
-- Keep the delay at **6 seconds or more** (the default).
+To lower the chance of getting blocked:
+
+- Keep the delay at **6 seconds or more** (the default). Slower is safer.
 - Clear people in **small batches** — a few dozen at a time, not hundreds in one sitting.
-- If you get rate-limited, take a break for a few hours before trying again.
+- Spread big cleanups over several days instead of doing them all at once.
+- The moment Instagram starts rate-limiting, the panel stops early and tells you. If that
+  happens, **stop and take a break for several hours** before trying again.
 
 ## How it works
 
@@ -66,4 +73,4 @@ exactly as if you'd clicked the buttons by hand.
 
 ## License
 
-MIT — do whatever, keep the credit to the original. Made with ♡ as a remix of *code with coco*.
+MIT — do whatever, keep the credit to the original. A remix of *code with coco*.
