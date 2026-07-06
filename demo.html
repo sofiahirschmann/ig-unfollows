@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ig-unfollows · demo</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #2a2140;
+      background:
+        radial-gradient(1100px 600px at 85% -10%, #ffe3f6 0%, transparent 55%),
+        radial-gradient(900px 600px at 0% 110%, #e7ddff 0%, transparent 55%),
+        #fbf7ff;
+      display: flex; align-items: center; justify-content: center; padding: 48px 24px;
+    }
+    .card {
+      max-width: 560px; text-align: center;
+      background: rgba(255,255,255,.72);
+      border: 1px solid #f2dff6; border-radius: 24px;
+      padding: 40px 36px; backdrop-filter: blur(8px);
+      box-shadow: 0 20px 60px rgba(157,108,255,.18);
+    }
+    h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: -.5px;
+      background: linear-gradient(120deg,#ff7ad9,#9d6cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .tag { font-size: 14px; color: #6b5b8a; margin: 0 0 26px; line-height: 1.5; }
+    button {
+      border: 0; cursor: pointer; font-weight: 700; font-size: 15px;
+      padding: 13px 26px; border-radius: 14px; color: #fff;
+      background: linear-gradient(120deg,#ff7ad9,#9d6cff);
+      box-shadow: 0 8px 24px rgba(157,108,255,.35);
+    }
+    button:hover { filter: brightness(1.04); }
+    .note { margin-top: 22px; font-size: 12.5px; color: #9089a3; line-height: 1.6; }
+    code { background: #f3ecfb; padding: 1px 6px; border-radius: 6px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>ig-unfollows</h1>
+    <p class="tag">A preview of the panel with pretend data — nothing here touches a real
+      Instagram account. Click below, then try searching, selecting, and running a
+      (fake) unfollow.</p>
+    <button id="open">open the panel →</button>
+    <p class="note">On the real thing you paste <code>ig-unfollows.js</code> into your
+      browser console on instagram.com and it opens automatically. See the
+      <a href="README.md">README</a>.</p>
+  </div>
+
+  <!-- flag stops the script from auto-running / hitting Instagram -->
+  <script>window.__IG_UNFOLLOWS_DEMO__ = true;</script>
+  <script src="ig-unfollows.js"></script>
+  <script>
+    const FIRST = ["ava","mateo","luna","noah","mia","liam","sofia","kai","zoe","eli",
+      "nina","theo","ruby","jonas","cleo","axel","iris","hugo","maya","otis"];
+    const LAST = ["park","rivera","chen","okafor","kowalski","haddad","nguyen","silva",
+      "romano","adeyemi","fischer","costa","malik","larsen","ortega"];
+    const rand = (a) => a[Math.floor(Math.random() * a.length)];
+
+    function mockUsers(n) {
+      const seen = new Set();
+      const out = [];
+      while (out.length < n) {
+        const f = rand(FIRST), l = rand(LAST);
+        const username = `${f}${Math.random() < .5 ? "." : "_"}${l}${Math.floor(Math.random()*90)}`;
+        if (seen.has(username)) continue;
+        seen.add(username);
+        out.push({
+          pk: String(1000 + out.length),
+          username,
+          full_name: `${f[0].toUpperCase()+f.slice(1)} ${l[0].toUpperCase()+l.slice(1)}`,
+          profile_pic_url: "", // force the built-in pastel fallback avatars
+          is_verified: Math.random() < .12,
+        });
+      }
+      return out;
+    }
+
+    // fake unfollow: waits a beat, succeeds most of the time, occasionally "fails"
+    async function fakeUnfollow(user) {
+      await new Promise((r) => setTimeout(r, 350));
+      return Math.random() < .1
+        ? { ok: false, message: "demo: pretend this one failed" }
+        : { ok: true };
+    }
+
+    document.getElementById("open").onclick = () => {
+      window.__igUnfollows.renderPanel(mockUsers(16), { demo: true, onUnfollow: fakeUnfollow });
+    };
+  </script>
+</body>
+</html>
